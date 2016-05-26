@@ -8,7 +8,13 @@
 	<context:component-scan base-package="pt.ef.backback.rest.controller" />
 
 	<mvc:annotation-driven />
-	
 	<mvc:default-servlet-handler />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean id="requestInterceptorLogger" class="pt.ef.backback.rest.logging.RequestInterceptorLogger" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

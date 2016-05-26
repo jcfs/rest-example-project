@@ -20,7 +20,7 @@
 		<servlet.version>2.5</servlet.version>
 
 		<!-- Spring -->
-		<spring-framework.version>4.0.1.RELEASE</spring-framework.version>
+		<spring-framework.version>4.2.6.RELEASE</spring-framework.version>
 
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
