@@ -1,24 +1,13 @@
 package pt.ef.backback.rest.service;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import pt.ef.backback.core.service.GenericService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-public class CamelTest extends AbstractJUnit4SpringContextTests {
+public class CamelTest extends CamelTestSupport {
 
-	@Autowired
-	private GenericService genericService;
 
-	@Test
-	public void testGetGenericMethod() {
-		Assert.assertEquals(0, genericService.getGenericMethod());
-	}
 }
