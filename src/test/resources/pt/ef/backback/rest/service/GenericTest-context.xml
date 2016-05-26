@@ -5,6 +5,6 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="genericService" class="pt.ef.backback.rest.service.GenericServiceImpl" />
+	<bean id="genericService" class="pt.ef.backback.core.service.GenericServiceImpl" />
 
 </beans>

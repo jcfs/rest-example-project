@@ -1,4 +1,4 @@
-package pt.ef.backback.rest.service;
+package pt.ef.backback.core.service;
 
 /**
  * @author jsalavisa
