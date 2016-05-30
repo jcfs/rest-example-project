@@ -15,6 +15,7 @@
 </head>
 <body ng-controller="atmController">
   <div class="container">
+  	<a href="/j_spring_security_logout">Logout</a>
     <h2>ATM Search Utility:</h2>
 
     <input type="text" ng-model="city" /> 
