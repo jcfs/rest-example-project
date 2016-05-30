@@ -1,4 +1,4 @@
-package pt.ef.backback.rest.controller;
+package pt.ef.backbase.rest.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -26,54 +26,55 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 @WebAppConfiguration
 public class ControllerTest {
 
-	@Autowired
-	private GenericController genericController;
-	@Autowired
-	private RequestMappingHandlerAdapter handlerAdapter;
-	@Autowired
-	private RequestMappingHandlerMapping handlerMapping;
+    @Autowired
+    private AtmController atmController;
+    @Autowired
+    private RequestMappingHandlerAdapter handlerAdapter;
+    @Autowired
+    private RequestMappingHandlerMapping handlerMapping;
 
-	/**
-	 * Test the json retorn for the generic controller
-	 * 
-	 * @throws Exception
-	 */
-	@Test
-	public void testGenericController() throws Exception {
-		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(this.genericController).build();
-		mockMvc.perform(get("/get")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+    /**
+     * Test the json return for the generic controller
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAtmController() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(this.atmController).build();
+        mockMvc.perform(get("/atm")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+        mockMvc.perform(get("/atm/XXX/")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
 
-	}
+    }
 
-	/**
-	 * Test the code in the logging interceptor
-	 * 
-	 * @throws Exception
-	 */
-	@Test
-	public void testInterceptor() throws Exception {
-		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.setRequestURI("/get");
-		request.setMethod("GET");
+    /**
+     * Test the code in the logging interceptor
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testLoggingInterceptor() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setRequestURI("/atm");
+        request.setMethod("GET");
 
-		MockHttpServletResponse response = new MockHttpServletResponse();
+        MockHttpServletResponse response = new MockHttpServletResponse();
 
-		HandlerExecutionChain handlerExecutionChain = handlerMapping.getHandler(request);
+        HandlerExecutionChain handlerExecutionChain = handlerMapping.getHandler(request);
 
-		HandlerInterceptor[] interceptors = handlerExecutionChain.getInterceptors();
+        HandlerInterceptor[] interceptors = handlerExecutionChain.getInterceptors();
 
-		for (HandlerInterceptor interceptor : interceptors) {
-			interceptor.preHandle(request, response, handlerExecutionChain.getHandler());
-		}
+        for (HandlerInterceptor interceptor : interceptors) {
+            interceptor.preHandle(request, response, handlerExecutionChain.getHandler());
+        }
 
-		ModelAndView mav = handlerAdapter.handle(request, response, handlerExecutionChain.getHandler());
+        ModelAndView mav = handlerAdapter.handle(request, response, handlerExecutionChain.getHandler());
 
-		for (HandlerInterceptor interceptor : interceptors) {
-			interceptor.postHandle(request, response, handlerExecutionChain.getHandler(), mav);
-		}
+        for (HandlerInterceptor interceptor : interceptors) {
+            interceptor.postHandle(request, response, handlerExecutionChain.getHandler(), mav);
+        }
 
-		Assert.assertEquals(200, response.getStatus());
+        Assert.assertEquals(200, response.getStatus());
 
-	}
+    }
 
 }
