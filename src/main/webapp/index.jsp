@@ -19,11 +19,10 @@
 
     <input type="text" ng-model="city" /> 
     
-    <select name="singleSelect" ng-model="type">
-      <option value="option-1">Direct Invoke</option>
-      <option value="option-2">Local Logic</option>
+    <select name="singleSelect" ng-model="type" >
+      <option value="option-1">Filter Remotely</option>
+      <option value="option-2">Filter Locally</option>
     </select>
-    <br>
     
     <input type="submit" ng-click="updateResults()" value="Search" />
 

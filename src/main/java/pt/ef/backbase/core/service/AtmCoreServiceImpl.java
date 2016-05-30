@@ -31,7 +31,10 @@ public class AtmCoreServiceImpl implements AtmCoreService {
      */
     @Override
     public Atm[] listAtms() {
-        logger.info("Invoking atm core service to list atms");
+        if (logger.isDebugEnabled()) {
+            logger.debug("Invoking atm core service to list atms");
+        }
+
         HttpEntity<Atm[]> entity = restTemplate.getForEntity(baseUrl, Atm[].class);
         return entity.getBody();
     }
@@ -43,7 +46,11 @@ public class AtmCoreServiceImpl implements AtmCoreService {
     @Override
     public Atm[] getAtmByCityPassthrough(String city) {
         Assert.notNull(city);
-        logger.info("Invoking atm core service to list atms by city for city: " + city);
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("Invoking atm core service to list atms by city for city: " + city);
+        }
+
         HttpEntity<Atm[]> entity = restTemplate.getForEntity(baseUrl + URL_CITY_SEARCH + city + "/", Atm[].class);
         return entity.getBody();
     }
@@ -55,7 +62,10 @@ public class AtmCoreServiceImpl implements AtmCoreService {
     @Override
     public Atm[] getAtmByCity(String city) {
         Assert.notNull(city);
-        logger.info("Invoking atm core service to list atms by city for city: " + city);
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("Invoking atm core service to list atms by city for city: " + city);
+        }
 
         HttpEntity<Atm[]> entity = restTemplate.getForEntity(baseUrl, Atm[].class);
 

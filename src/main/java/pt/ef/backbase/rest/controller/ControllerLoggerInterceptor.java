@@ -14,7 +14,11 @@ public class ControllerLoggerInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("Incoming Request: " + request.getMethod() + " > " + request.getRequestURL());
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("Incoming Request: " + request.getMethod() + " > " + request.getRequestURL());
+        }
+
         return super.preHandle(request, response, handler);
     }
 }
