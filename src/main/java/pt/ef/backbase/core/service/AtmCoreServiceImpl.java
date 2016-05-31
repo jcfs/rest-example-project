@@ -42,7 +42,7 @@ public class AtmCoreServiceImpl implements AtmCoreService, InitializingBean {
 					return false;
 				}
 
-				return source.getAddress().getCity().equals(argument);
+				return source.getAddress().getCity().equalsIgnoreCase(argument);
 			}
 		});
 	}

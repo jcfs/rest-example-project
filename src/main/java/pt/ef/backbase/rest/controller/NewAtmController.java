@@ -16,8 +16,8 @@ import pt.ef.backbase.rest.support.RestApiVersion;
  * @author jsalavisa
  */
 @Controller
-@RestApiVersion(1)
-public class AtmController {
+@RestApiVersion(2)
+public class NewAtmController {
 
 	@Autowired
 	private AtmCoreService atmCoreService;
@@ -30,15 +30,7 @@ public class AtmController {
 	@RequestMapping("/atm")
 	@ResponseBody
 	public Atm[] listAtms() {
-		Atm[] listAtms = atmCoreService.listAtms();
-
-		// It is here just to demonstrate the diferences between the api
-		// versions
-		for (Atm atm : listAtms) {
-			atm.getAddress().setCity(atm.getAddress().getCity().toLowerCase());
-		}
-
-		return listAtms;
+		return atmCoreService.listAtms();
 	}
 
 	/**
@@ -49,15 +41,7 @@ public class AtmController {
 	@RequestMapping("/atm/{city}")
 	@ResponseBody
 	public Atm[] listAtms(@PathVariable("city") String city) {
-		Atm[] listAtms = atmCoreService.getAtmByCity(city);
-
-		// It is here just to demonstrate the diferences between the api
-		// versions
-		for (Atm atm : listAtms) {
-			atm.getAddress().setCity(atm.getAddress().getCity().toLowerCase());
-		}
-
-		return listAtms;
+		return atmCoreService.getAtmByCity(city);
 	}
 
 	/**
@@ -68,20 +52,10 @@ public class AtmController {
 	@RequestMapping("/atm/{city}/{direct}")
 	@ResponseBody
 	public Atm[] listAtms(@PathVariable("city") String city, @PathVariable("direct") boolean direct) {
-		Atm[] listAtms;
-
 		if (direct) {
-			listAtms = atmCoreService.getAtmByCityPassthrough(city);
+			return atmCoreService.getAtmByCityPassthrough(city);
 		} else {
-			listAtms = atmCoreService.getAtmByCity(city);
+			return atmCoreService.getAtmByCity(city);
 		}
-
-		// It is here just to demonstrate the diferences between the api
-		// versions
-		for (Atm atm : listAtms) {
-			atm.getAddress().setCity(atm.getAddress().getCity().toLowerCase());
-		}
-
-		return listAtms;
 	}
 }

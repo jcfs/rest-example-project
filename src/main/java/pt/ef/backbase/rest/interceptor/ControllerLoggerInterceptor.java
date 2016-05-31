@@ -1,4 +1,4 @@
-package pt.ef.backbase.rest.controller;
+package pt.ef.backbase.rest.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +12,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class ControllerLoggerInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger LOG = Logger.getLogger(HandlerInterceptorAdapter.class);
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Incoming Request: " + request.getMethod() + " > " + request.getRequestURL());
-        }
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Incoming Request: " + request.getMethod() + " > " + request.getRequestURL());
+		}
 
-        return super.preHandle(request, response, handler);
-    }
+		return super.preHandle(request, response, handler);
+	}
 }

@@ -5,14 +5,18 @@ atmApp.controller('atmController', function($scope, $http) {
 	$scope.atms = undefined;
 
 	var loadResults = function() {
-		var url = "atm/";
+		var url = "v1/atm";
+
+		if ($scope.api !== undefined && $scope.api === "2") {
+			url = "v2/atm";
+		}
 
 		if ($scope.type === "option-1" && $scope.city !== "") {
-			url = url + $scope.city + "/true";
+			url = url + "/" + $scope.city + "/true";
 		} else if ($scope.type === "option-2" && $scope.city !== "") {
-			url = url + $scope.city + "/false";
+			url = url + "/" + $scope.city + "/false";
 		} else if ($scope.city !== "") {
-			url = url + $scope.city;
+			url = url + "/" + $scope.city;
 		}
 
 		$http.get(url).success(function(data) {

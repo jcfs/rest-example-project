@@ -7,13 +7,12 @@
 	<context:component-scan base-package="pt.ef.backbase.rest.controller" />
 	<context:property-placeholder location="classpath:rest-test.properties" />
 
-	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean id="requestInterceptorLogger" class="pt.ef.backbase.rest.controller.ControllerLoggerInterceptor" />
+			<bean id="requestInterceptorLogger" class="pt.ef.backbase.rest.interceptor.ControllerLoggerInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
