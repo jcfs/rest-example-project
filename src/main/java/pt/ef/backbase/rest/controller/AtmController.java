@@ -17,43 +17,43 @@ import pt.ef.backbase.rest.api.Atm;
 @Controller
 public class AtmController {
 
-    @Autowired
-    private AtmCoreService atmCoreService;
+	@Autowired
+	private AtmCoreService atmCoreService;
 
-    /**
-     * Returns the array of ATMS
-     *
-     * @return the array atms
-     */
-    @RequestMapping("/atm")
-    @ResponseBody
-    public Atm[] listAtms() {
-        return atmCoreService.listAtms();
-    }
+	/**
+	 * Returns the array of ATMS
+	 *
+	 * @return the array atms
+	 */
+	@RequestMapping("/atm")
+	@ResponseBody
+	public Atm[] listAtms() {
+		return atmCoreService.listAtms();
+	}
 
-    /**
-     * Returns the array of ATMS by city
-     *
-     * @return the array of atms
-     */
-    @RequestMapping("/atm/{city}")
-    @ResponseBody
-    public Atm[] listAtms(@PathVariable("city") String city) {
-        return atmCoreService.getAtmByCity(city);
-    }
+	/**
+	 * Returns the array of ATMS by city
+	 *
+	 * @return the array of atms
+	 */
+	@RequestMapping("/atm/{city}")
+	@ResponseBody
+	public Atm[] listAtms(@PathVariable("city") String city) {
+		return atmCoreService.getAtmByCity(city);
+	}
 
-    /**
-     * Returns the array of ATMS by city
-     *
-     * @return the array of atms
-     */
-    @RequestMapping("/atm/{city}/{direct}")
-    @ResponseBody
-    public Atm[] listAtms(@PathVariable("city") String city, @PathVariable("direct") boolean direct) {
-        if (direct) {
-            return atmCoreService.getAtmByCityPassthrough(city);
-        } else {
-            return atmCoreService.getAtmByCity(city);
-        }
-    }
+	/**
+	 * Returns the array of ATMS by city
+	 *
+	 * @return the array of atms
+	 */
+	@RequestMapping("/atm/{city}/{direct}")
+	@ResponseBody
+	public Atm[] listAtms(@PathVariable("city") String city, @PathVariable("direct") boolean direct) {
+		if (direct) {
+			return atmCoreService.getAtmByCityPassthrough(city);
+		} else {
+			return atmCoreService.getAtmByCity(city);
+		}
+	}
 }

@@ -10,13 +10,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  * @author jsalavisa
  */
 public class ControllerLoggerInterceptor extends HandlerInterceptorAdapter {
-    final static Logger logger = Logger.getLogger(HandlerInterceptorAdapter.class);
+	private static final Logger LOG = Logger.getLogger(HandlerInterceptorAdapter.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        if (logger.isDebugEnabled()) {
-            logger.debug("Incoming Request: " + request.getMethod() + " > " + request.getRequestURL());
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Incoming Request: " + request.getMethod() + " > " + request.getRequestURL());
         }
 
         return super.preHandle(request, response, handler);

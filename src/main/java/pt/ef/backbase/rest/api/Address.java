@@ -1,11 +1,3 @@
-/*
- * Copyright © 2016 EF - Tecnologias de Software, S.A.
- *
- * Todo o conteúdo deste ficheiro, quer na sua forma de código fonte, quer na de
- * código objecto/executável, é propriedade exclusiva da empresa EF - Tecnologias
- * de Software, S.A., não sendo permitida a sua reprodução ou utilização para
- * qualquer fim sem a explícita autorização escrita desta empresa.
- */
 package pt.ef.backbase.rest.api;
 
 /**

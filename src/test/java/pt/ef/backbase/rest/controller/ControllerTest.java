@@ -43,7 +43,9 @@ public class ControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(this.atmController).build();
         mockMvc.perform(get("/atm")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
         mockMvc.perform(get("/atm/XXX/")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
-
+        mockMvc.perform(get("/atm/XXX/true")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+        mockMvc.perform(get("/atm/XXX/false")).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+        mockMvc.perform(get("/logout"));
     }
 
     /**

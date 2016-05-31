@@ -11,7 +11,6 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 
-
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
@@ -35,12 +34,10 @@
 
 	<!-- Basic Auth - Spring Security -->
 
-	<security:http use-expressions="false">
+	<security:http auto-config="true" use-expressions="false">
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
-		<security:http-basic />
+		<security:logout delete-cookies="true" invalidate-session="true" logout-success-url="/logout.jsp" />
 	</security:http>
-	
-	<security:logout logout-success-url="/hello" />
 
 	<security:authentication-manager>
 		<security:authentication-provider>
